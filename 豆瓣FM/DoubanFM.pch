@@ -1,0 +1,41 @@
+//
+//  DoubanFM.pch
+//  豆瓣FM
+//
+//  Created by 王炯 on 16/7/14.
+//  Copyright © 2016年 王炯. All rights reserved.
+//
+
+#ifndef DoubanFM_pch
+#define DoubanFM_pch
+
+#define MAS_SHORTHAND
+//define this constant if you want to enable auto-boxing for default syntax
+#define MAS_SHORTHAND_GLOBALS
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//项目可能用到的一些常用变量
+#import "DefineConstant.h"
+#import "SomeNets.h"
+
+
+#define kFilePath(fileName) ([NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:fileName])
+
+
+//需要用到的自定义类
+#import "NetWorkTool.h"
+
+
+//需要用到的第三方控制器框架
+#import "JASidePanelController.h"
+#import "UIViewController+JASidePanel.h"
+
+//需要用到的第三方框架
+#import <Masonry/Masonry.h>
+#import <AFNetworking.h>
+#import <SDImageCache.h>
+#import <SVProgressHUD.h>
+
+
+#endif /* DoubanFM_pch */
