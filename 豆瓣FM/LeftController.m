@@ -17,10 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.title = @"左边栏";
-    
-    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning
