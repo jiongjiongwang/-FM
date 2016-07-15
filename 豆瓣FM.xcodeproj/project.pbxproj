@@ -10,6 +10,7 @@
 		4CF99CD11D38C61C0090A57D /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD01D38C61C0090A57D /* BaseController.m */; };
 		4CF99CD41D38CA4A0090A57D /* SongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD31D38CA4A0090A57D /* SongModel.m */; };
 		4CF99CD71D38D5EB0090A57D /* SingerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD61D38D5EB0090A57D /* SingerModel.m */; };
+		4CF99CD91D39057E0090A57D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF99CD81D39057E0090A57D /* MediaPlayer.framework */; };
 		4CFBD2281D37821C00FBF9A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBD2271D37821C00FBF9A7 /* main.m */; };
 		4CFBD22B1D37821C00FBF9A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBD22A1D37821C00FBF9A7 /* AppDelegate.m */; };
 		4CFBD2331D37821C00FBF9A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CFBD2321D37821C00FBF9A7 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		4CF99CD31D38CA4A0090A57D /* SongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongModel.m; sourceTree = "<group>"; };
 		4CF99CD51D38D5EB0090A57D /* SingerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingerModel.h; sourceTree = "<group>"; };
 		4CF99CD61D38D5EB0090A57D /* SingerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingerModel.m; sourceTree = "<group>"; };
+		4CF99CD81D39057E0090A57D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4CFBD2231D37821C00FBF9A7 /* 豆瓣FM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "豆瓣FM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CFBD2271D37821C00FBF9A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4CFBD2291D37821C00FBF9A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CF99CD91D39057E0090A57D /* MediaPlayer.framework in Frameworks */,
 				8308A0780BB3433962B544FB /* libPods-豆瓣FM.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +80,7 @@
 		1DB85CC62612B2EBBACC8C0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CF99CD81D39057E0090A57D /* MediaPlayer.framework */,
 				A4AF106DD592695F5AB2BD8C /* libPods-豆瓣FM.a */,
 			);
 			name = Frameworks;
