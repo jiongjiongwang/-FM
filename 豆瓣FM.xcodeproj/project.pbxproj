@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4CF99CD11D38C61C0090A57D /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD01D38C61C0090A57D /* BaseController.m */; };
+		4CF99CD41D38CA4A0090A57D /* SongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD31D38CA4A0090A57D /* SongModel.m */; };
+		4CF99CD71D38D5EB0090A57D /* SingerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD61D38D5EB0090A57D /* SingerModel.m */; };
 		4CFBD2281D37821C00FBF9A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBD2271D37821C00FBF9A7 /* main.m */; };
 		4CFBD22B1D37821C00FBF9A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBD22A1D37821C00FBF9A7 /* AppDelegate.m */; };
 		4CFBD2331D37821C00FBF9A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CFBD2321D37821C00FBF9A7 /* Assets.xcassets */; };
@@ -26,6 +28,10 @@
 /* Begin PBXFileReference section */
 		4CF99CCF1D38C61C0090A57D /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		4CF99CD01D38C61C0090A57D /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
+		4CF99CD21D38CA4A0090A57D /* SongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongModel.h; sourceTree = "<group>"; };
+		4CF99CD31D38CA4A0090A57D /* SongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongModel.m; sourceTree = "<group>"; };
+		4CF99CD51D38D5EB0090A57D /* SingerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingerModel.h; sourceTree = "<group>"; };
+		4CF99CD61D38D5EB0090A57D /* SingerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingerModel.m; sourceTree = "<group>"; };
 		4CFBD2231D37821C00FBF9A7 /* 豆瓣FM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "豆瓣FM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CFBD2271D37821C00FBF9A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4CFBD2291D37821C00FBF9A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -160,6 +166,10 @@
 		4CFBD2481D3783FF00FBF9A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4CF99CD21D38CA4A0090A57D /* SongModel.h */,
+				4CF99CD31D38CA4A0090A57D /* SongModel.m */,
+				4CF99CD51D38D5EB0090A57D /* SingerModel.h */,
+				4CF99CD61D38D5EB0090A57D /* SingerModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -413,11 +423,13 @@
 				4CFBD22B1D37821C00FBF9A7 /* AppDelegate.m in Sources */,
 				4CFBD26E1D37B85300FBF9A7 /* HeadImageView.m in Sources */,
 				4CFBD2601D37AB9500FBF9A7 /* NetWorkTool.m in Sources */,
+				4CF99CD41D38CA4A0090A57D /* SongModel.m in Sources */,
 				4CFBD2591D37857600FBF9A7 /* JASidePanelController.m in Sources */,
 				4CFBD2501D3784B400FBF9A7 /* HomeController.m in Sources */,
 				4CFBD25A1D37857600FBF9A7 /* UIViewController+JASidePanel.m in Sources */,
 				4CF99CD11D38C61C0090A57D /* BaseController.m in Sources */,
 				4CFBD2661D37ACC400FBF9A7 /* NSArray+Log.m in Sources */,
+				4CF99CD71D38D5EB0090A57D /* SingerModel.m in Sources */,
 				4CFBD2531D3784F000FBF9A7 /* LeftController.m in Sources */,
 				4CFBD2281D37821C00FBF9A7 /* main.m in Sources */,
 			);
