@@ -17,6 +17,9 @@
 //从外界获取的歌曲播放进度来设置圆环的进度
 @property (nonatomic,assign)float rotation;
 
+//定义播放/暂停block
+@property (nonatomic,copy) void(^isPlayBlock)(BOOL);
+
 
 
 @end

@@ -57,17 +57,19 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    //初始化界面
+    //初始化界面(界面上的控件做一次初始化)
     [self setUpUI];
     
+    
+    
     //初始化数据
-    [self setUpDataWithChannelID:@"5"];
+    [self setUpDataWithChannelID:@"9"];
     
    
     
 }
 
-
+//初始化数据+刷新数据
 -(void)setUpDataWithChannelID:(NSString *)channelID
 {
     [SongModel getSongDataWithChannelID:channelID Sucess:^(NSArray<SongModel *> *songDataArray) {
@@ -140,7 +142,26 @@
     
     alumView.backgroundColor = [UIColor whiteColor];
     
+    
+    //定义block内容
+    alumView.isPlayBlock = ^(BOOL isPlay){
+        
+        if (isPlay)
+        {
+            [_audioPlayer play];
+        }
+        else
+        {
+            [_audioPlayer pause];
+        }
+    };
+    
+    
     [self.view addSubview:alumView];
+    
+   
+    
+    
     
     //设置专辑封面的约束
     [alumView makeConstraints:^(MASConstraintMaker *make) {
@@ -219,7 +240,7 @@
     //(1)获取播放器当前的播放时间
     NSTimeInterval currentTime = self.audioPlayer.currentPlaybackTime;
     
-    //NSLog(@"当前播放时间:%f",currentTime);
+    NSLog(@"当前播放时间:%f",currentTime);
     
     //当时间大于0时
     if (currentTime > 0.0)
@@ -227,18 +248,22 @@
          //(2)获取当前歌曲的播放总时间
         NSTimeInterval totalTime = self.audioPlayer.duration;
         
-        //NSLog(@"歌曲总时间:%f",totalTime);
+        NSLog(@"歌曲总时间:%f",totalTime);
         
         //(3)获取歌曲播放的百分比
         float rotation = currentTime/totalTime;
         
-        //NSLog(@"百分比%f",rotation);
+        NSLog(@"百分比%f",rotation);
         
         self.alumView.rotation = rotation;
         
     }
     
 }
+
+
+
+
 
 -(void)dealloc
 {
