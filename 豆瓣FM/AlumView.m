@@ -47,17 +47,17 @@
     {
         
         //添加HeadImageView控件在上面
-        HeadImageView *headImageView = [[HeadImageView alloc] init];
+        HeadImageView *headImageView = [[HeadImageView alloc] initWithImage:[UIImage imageNamed:@"AlumImage"]];
         
         self.headImageView = headImageView;
         
         //打开图片交互
         headImageView.userInteractionEnabled = YES;
         
-        //将手势加载到headImageView上
-        [headImageView addGestureRecognizer:self.tap];
-        
         [self addSubview:headImageView];
+        
+        
+        
         
         
         
@@ -84,6 +84,15 @@
     }
     
     return self;
+}
+
+-(void)HeadImageAddGesture
+{
+    
+    NSLog(@"HeadImage添加tap手势");
+    
+    //将手势加载到headImageView上
+    [self.headImageView addGestureRecognizer:self.tap];
 }
 
 
@@ -137,9 +146,8 @@
 
     
     
-    
-    //先画一个灰色的圆环
-         UIBezierPath *path = [UIBezierPath bezierPath];
+        //先画一个灰色的圆环
+        UIBezierPath *path = [UIBezierPath bezierPath];
         
         
         [path addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
@@ -188,7 +196,7 @@
     //当前处于播放状态
     if (tap.view == self.headImageView)
     {
-        //NSLog(@"点击播放图片了---->暂停");
+        NSLog(@"点击播放图片了---->暂停");
         //(1)将暂停图片show出来
         self.pauseImageView.hidden = NO;
         
@@ -205,7 +213,7 @@
     //当前处于暂停状态
     else
     {
-        //NSLog(@"点击暂停图片了----->重新播放");
+        NSLog(@"点击暂停图片了----->重新播放");
         //(1)将暂停图片隐藏一下
         self.pauseImageView.hidden = YES;
         

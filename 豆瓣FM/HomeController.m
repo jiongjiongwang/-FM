@@ -242,23 +242,37 @@
     
     NSLog(@"当前播放时间:%f",currentTime);
     
+    
+    
     //当时间大于0时
+    //时间大于0有两种情况:1-第一次时间大于0,此时从网络上加载到了音乐
+    //2-正常播，时间大于0,此时以后就不再重复添加手势
     if (currentTime > 0.0)
     {
+
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            
+            //只在第一次时间大于0时添加手势，以后不再添加手势
+            //添加手势
+            [self.alumView HeadImageAddGesture];
+            
+        });
+        
+        
          //(2)获取当前歌曲的播放总时间
         NSTimeInterval totalTime = self.audioPlayer.duration;
         
-        NSLog(@"歌曲总时间:%f",totalTime);
+        //NSLog(@"歌曲总时间:%f",totalTime);
         
         //(3)获取歌曲播放的百分比
         float rotation = currentTime/totalTime;
         
-        NSLog(@"百分比%f",rotation);
+        //NSLog(@"百分比%f",rotation);
         
         self.alumView.rotation = rotation;
         
     }
-    
 }
 
 

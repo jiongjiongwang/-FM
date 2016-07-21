@@ -20,6 +20,7 @@
 //定义播放/暂停block
 @property (nonatomic,copy) void(^isPlayBlock)(BOOL);
 
+-(void)HeadImageAddGesture;
 
 
 @end
