@@ -8,8 +8,15 @@
 
 #import "HomeController.h"
 #import "SongModel.h"
+
+
+#import "AlumView.h"
 #import "HeadImageView.h"
 #import <UIImageView+WebCache.h>
+
+
+
+
 #import <MediaPlayer/MediaPlayer.h>
 
 
@@ -18,8 +25,10 @@
 //歌曲信息
 @property (nonatomic,strong)SongModel *songDataModel;
 
-//专辑封面图
-@property (nonatomic,weak)HeadImageView *alumImage;
+
+//专辑封面View
+@property (nonatomic,weak)AlumView *alumView;
+
 
 //歌曲名
 @property (nonatomic,weak)UILabel *songNameLabel;
@@ -29,6 +38,11 @@
 
 //定义一个MPMoviePlayerController类型的变量
 @property (nonatomic,strong)MPMoviePlayerController *audioPlayer;
+
+
+
+//声明一个定时器，用于随时获取当前歌曲的播放时间
+@property (nonatomic,strong)NSTimer *timer;
 
 
 @end
@@ -47,7 +61,9 @@
     [self setUpUI];
     
     //初始化数据
-    [self setUpDataWithChannelID:@"1"];
+    [self setUpDataWithChannelID:@"5"];
+    
+   
     
 }
 
@@ -63,7 +79,10 @@
         //基本信息
         NSLog(@"歌曲图片地址为:%@",model.picture);
         
-        [self.alumImage sd_setImageWithURL:[NSURL URLWithString:model.picture] placeholderImage:[UIImage imageNamed:@"AlumImage"]];
+        
+        [self.alumView.headImageView sd_setImageWithURL:[NSURL URLWithString:model.picture] placeholderImage:[UIImage imageNamed:@"AlumImage"]];
+        
+        
         
         
         NSLog(@"歌曲名为:%@",model.title);
@@ -86,8 +105,12 @@
         [self.audioPlayer play];
         
         
+        //先停掉定时器
+        [self.timer invalidate];
         
         
+        //初始化定时器
+        [self setUpTimer];
         
         
         //扩展信息
@@ -110,21 +133,22 @@
 -(void)setUpUI
 {
     //(1)专辑封面图
-    HeadImageView *alumImage = [[HeadImageView alloc] init];
-    
-    self.alumImage = alumImage;
+    AlumView *alumView = [[AlumView alloc] init];
     
     
+    self.alumView = alumView;
     
-    [self.view addSubview:alumImage];
+    alumView.backgroundColor = [UIColor whiteColor];
+    
+    [self.view addSubview:alumView];
     
     //设置专辑封面的约束
-    [alumImage makeConstraints:^(MASConstraintMaker *make) {
-       
+    [alumView makeConstraints:^(MASConstraintMaker *make) {
+        
         make.top.equalTo(self.view).offset(160);
         make.centerX.equalTo(self.view.centerX);
         make.left.equalTo(self.view).offset(80);
-        make.width.equalTo(alumImage.height);
+        make.width.equalTo(alumView.height);
     }];
     
     
@@ -146,7 +170,7 @@
     [songNameLabel makeConstraints:^(MASConstraintMaker *make) {
        
         make.centerX.equalTo(self.view.centerX);
-        make.top.equalTo(alumImage.bottom).offset(40);
+        make.top.equalTo(alumView.bottom).offset(40);
         
     }];
     
@@ -181,6 +205,46 @@
     
     
 }
+
+//初始化定时器
+-(void)setUpTimer
+{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(UpdateSongInfo) userInfo:nil repeats:YES];
+    
+}
+
+//随时更新歌曲当前信息
+-(void)UpdateSongInfo
+{
+    //(1)获取播放器当前的播放时间
+    NSTimeInterval currentTime = self.audioPlayer.currentPlaybackTime;
+    
+    //NSLog(@"当前播放时间:%f",currentTime);
+    
+    //当时间大于0时
+    if (currentTime > 0.0)
+    {
+         //(2)获取当前歌曲的播放总时间
+        NSTimeInterval totalTime = self.audioPlayer.duration;
+        
+        //NSLog(@"歌曲总时间:%f",totalTime);
+        
+        //(3)获取歌曲播放的百分比
+        float rotation = currentTime/totalTime;
+        
+        //NSLog(@"百分比%f",rotation);
+        
+        self.alumView.rotation = rotation;
+        
+    }
+    
+}
+
+-(void)dealloc
+{
+    NSLog(@"VC销毁");
+}
+
 
 - (void)didReceiveMemoryWarning
 {

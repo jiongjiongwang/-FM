@@ -1,9 +1,9 @@
 //
 //  HeadImageView.h
-//  FastDoctor
+//  豆瓣FM
 //
-//  Created by 程建良 on 16/7/7.
-//  Copyright © 2016年 sc. All rights reserved.
+//  Created by 王炯 on 16/7/21.
+//  Copyright © 2016年 王炯. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
