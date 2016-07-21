@@ -86,13 +86,24 @@
     return self;
 }
 
--(void)HeadImageAddGesture
+-(void)HeadImageGestureWithAddOrRemove:(BOOL) addFlag
 {
     
-    NSLog(@"HeadImage添加tap手势");
+    if (addFlag)
+    {
+        NSLog(@"HeadImage添加tap手势");
+        
+        //将手势加载到headImageView上
+        [self.headImageView addGestureRecognizer:self.tap];
+    }
+    else
+    {
+        NSLog(@"HeadImage移除tap手势");
+        
+        //将手势移除headImageView上
+        [self.headImageView removeGestureRecognizer:self.tap];
+    }
     
-    //将手势加载到headImageView上
-    [self.headImageView addGestureRecognizer:self.tap];
 }
 
 

@@ -44,6 +44,13 @@
 //声明一个定时器，用于随时获取当前歌曲的播放时间
 @property (nonatomic,strong)NSTimer *timer;
 
+//定义一个BOOL值记录当前歌曲是否已经播放完成
+@property (nonatomic,assign)BOOL isSongOver;
+
+//记录添加手势的次数
+@property (nonatomic,assign)NSInteger gestureIndex;
+
+
 
 @end
 
@@ -250,14 +257,14 @@
     if (currentTime > 0.0)
     {
 
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            
+        if (_gestureIndex == 0)
+        {
             //只在第一次时间大于0时添加手势，以后不再添加手势
             //添加手势
-            [self.alumView HeadImageAddGesture];
+            [self.alumView HeadImageGestureWithAddOrRemove:YES];
             
-        });
+            _gestureIndex = 1;
+        }
         
         
          //(2)获取当前歌曲的播放总时间
@@ -268,10 +275,36 @@
         //(3)获取歌曲播放的百分比
         float rotation = currentTime/totalTime;
         
-        //NSLog(@"百分比%f",rotation);
+        NSLog(@"百分比%f",rotation);
         
         self.alumView.rotation = rotation;
         
+        
+        //当歌曲放完之后,自动刷新播放下一首音乐
+        if (rotation == 1)
+        {
+            NSLog(@"当前歌曲播放完毕");
+            
+            //更新BOOL值
+            _isSongOver = YES;
+            
+            //清空播放条
+            self.alumView.rotation = 0.0;
+            
+            //当前播放时间清空
+            currentTime = 0.0;
+            
+            //_gestureIndex置为0
+            _gestureIndex = 0;
+            
+            //暂时将手势移除
+            [self.alumView HeadImageGestureWithAddOrRemove:NO];
+            
+            //重新获取网络数据并播放
+            [self setUpDataWithChannelID:@"9"];
+            
+            
+        }
     }
 }
 
