@@ -25,6 +25,8 @@
 
 //需要用到的自定义类
 #import "NetWorkTool.h"
+#import "HeadImageView.h"
+
 
 
 //需要用到的第三方控制器框架
