@@ -38,6 +38,9 @@
     
     self.viewController.leftPanel = leftVC;
     
+    //在程序启动的时候读取登录信息返回给leftVC
+    leftVC.isLogin = YES;
+    
     
     //向右滑时的主界面
     HomeController *homeVC = [[HomeController alloc] init];

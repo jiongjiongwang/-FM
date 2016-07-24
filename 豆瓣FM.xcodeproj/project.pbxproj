@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4C001F311D406E4500E6DFD7 /* AlumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C001F301D406E4500E6DFD7 /* AlumView.m */; };
 		4C001F341D40712A00E6DFD7 /* HeadImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C001F331D40712A00E6DFD7 /* HeadImageView.m */; };
+		4C4214211D44BD990005DA45 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4214201D44BD990005DA45 /* LoginView.m */; };
+		4C4214241D44D65A0005DA45 /* UserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4214231D44D65A0005DA45 /* UserView.m */; };
+		4C4214271D44DA4F0005DA45 /* channelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4214261D44DA4F0005DA45 /* channelModel.m */; };
 		4CF99CD11D38C61C0090A57D /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD01D38C61C0090A57D /* BaseController.m */; };
 		4CF99CD41D38CA4A0090A57D /* SongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD31D38CA4A0090A57D /* SongModel.m */; };
 		4CF99CD71D38D5EB0090A57D /* SingerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD61D38D5EB0090A57D /* SingerModel.m */; };
@@ -32,6 +35,12 @@
 		4C001F301D406E4500E6DFD7 /* AlumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlumView.m; sourceTree = "<group>"; };
 		4C001F321D40712A00E6DFD7 /* HeadImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadImageView.h; sourceTree = "<group>"; };
 		4C001F331D40712A00E6DFD7 /* HeadImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadImageView.m; sourceTree = "<group>"; };
+		4C42141F1D44BD990005DA45 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		4C4214201D44BD990005DA45 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		4C4214221D44D65A0005DA45 /* UserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserView.h; sourceTree = "<group>"; };
+		4C4214231D44D65A0005DA45 /* UserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserView.m; sourceTree = "<group>"; };
+		4C4214251D44DA4F0005DA45 /* channelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = channelModel.h; sourceTree = "<group>"; };
+		4C4214261D44DA4F0005DA45 /* channelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = channelModel.m; sourceTree = "<group>"; };
 		4CF99CCF1D38C61C0090A57D /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		4CF99CD01D38C61C0090A57D /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
 		4CF99CD21D38CA4A0090A57D /* SongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongModel.h; sourceTree = "<group>"; };
@@ -184,6 +193,8 @@
 		4CFBD2491D37840500FBF9A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C001F2F1D406E4500E6DFD7 /* AlumView.h */,
+				4C001F301D406E4500E6DFD7 /* AlumView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -191,6 +202,8 @@
 		4CFBD24A1D37840E00FBF9A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4C4214251D44DA4F0005DA45 /* channelModel.h */,
+				4C4214261D44DA4F0005DA45 /* channelModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -198,6 +211,10 @@
 		4CFBD24B1D37841500FBF9A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C42141F1D44BD990005DA45 /* LoginView.h */,
+				4C4214201D44BD990005DA45 /* LoginView.m */,
+				4C4214221D44D65A0005DA45 /* UserView.h */,
+				4C4214231D44D65A0005DA45 /* UserView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -281,8 +298,6 @@
 		4CFBD26B1D37B81700FBF9A7 /* SubClass */ = {
 			isa = PBXGroup;
 			children = (
-				4C001F2F1D406E4500E6DFD7 /* AlumView.h */,
-				4C001F301D406E4500E6DFD7 /* AlumView.m */,
 				4C001F321D40712A00E6DFD7 /* HeadImageView.h */,
 				4C001F331D40712A00E6DFD7 /* HeadImageView.m */,
 			);
@@ -431,6 +446,8 @@
 			files = (
 				4CFBD22B1D37821C00FBF9A7 /* AppDelegate.m in Sources */,
 				4CFBD2601D37AB9500FBF9A7 /* NetWorkTool.m in Sources */,
+				4C4214211D44BD990005DA45 /* LoginView.m in Sources */,
+				4C4214271D44DA4F0005DA45 /* channelModel.m in Sources */,
 				4CF99CD41D38CA4A0090A57D /* SongModel.m in Sources */,
 				4CFBD2591D37857600FBF9A7 /* JASidePanelController.m in Sources */,
 				4CFBD2501D3784B400FBF9A7 /* HomeController.m in Sources */,
@@ -441,6 +458,7 @@
 				4C001F341D40712A00E6DFD7 /* HeadImageView.m in Sources */,
 				4CF99CD71D38D5EB0090A57D /* SingerModel.m in Sources */,
 				4CFBD2531D3784F000FBF9A7 /* LeftController.m in Sources */,
+				4C4214241D44D65A0005DA45 /* UserView.m in Sources */,
 				4CFBD2281D37821C00FBF9A7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

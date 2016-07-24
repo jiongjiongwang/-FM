@@ -60,7 +60,7 @@
 {
     [super viewDidLoad];
     
-    self.title  = @"华语歌曲";
+    self.title  = @"轻音乐";
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -247,7 +247,7 @@
     //(1)获取播放器当前的播放时间
     NSTimeInterval currentTime = self.audioPlayer.currentPlaybackTime;
     
-    NSLog(@"当前播放时间:%f",currentTime);
+    //NSLog(@"当前播放时间:%f",currentTime);
     
     
     
@@ -275,7 +275,7 @@
         //(3)获取歌曲播放的百分比
         float rotation = currentTime/totalTime;
         
-        NSLog(@"百分比%f",rotation);
+        //NSLog(@"百分比%f",rotation);
         
         self.alumView.rotation = rotation;
         

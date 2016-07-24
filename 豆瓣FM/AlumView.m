@@ -91,14 +91,14 @@
     
     if (addFlag)
     {
-        NSLog(@"HeadImage添加tap手势");
+        //NSLog(@"HeadImage添加tap手势");
         
         //将手势加载到headImageView上
         [self.headImageView addGestureRecognizer:self.tap];
     }
     else
     {
-        NSLog(@"HeadImage移除tap手势");
+        //NSLog(@"HeadImage移除tap手势");
         
         //将手势移除headImageView上
         [self.headImageView removeGestureRecognizer:self.tap];
@@ -207,7 +207,7 @@
     //当前处于播放状态
     if (tap.view == self.headImageView)
     {
-        NSLog(@"点击播放图片了---->暂停");
+        //NSLog(@"点击播放图片了---->暂停");
         //(1)将暂停图片show出来
         self.pauseImageView.hidden = NO;
         
@@ -224,7 +224,7 @@
     //当前处于暂停状态
     else
     {
-        NSLog(@"点击暂停图片了----->重新播放");
+        //NSLog(@"点击暂停图片了----->重新播放");
         //(1)将暂停图片隐藏一下
         self.pauseImageView.hidden = YES;
         
@@ -240,9 +240,12 @@
     }
     
     //调用block告知控制器暂停/重新播放
+    
+    __weak typeof(self) weakSelf = self;
+    
     if (_isPlayBlock)
     {
-        _isPlayBlock(self.isPlay);
+        _isPlayBlock(weakSelf.isPlay);
     }
 }
 

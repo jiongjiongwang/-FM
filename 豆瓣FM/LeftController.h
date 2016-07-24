@@ -12,4 +12,8 @@
 
 @interface LeftController : BaseController
 
+//(1)判断有没有登录
+@property (nonatomic,assign)BOOL isLogin;
+
+
 @end
