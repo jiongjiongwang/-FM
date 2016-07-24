@@ -67,12 +67,8 @@
     //初始化界面(界面上的控件做一次初始化)
     [self setUpUI];
     
-    
-    
     //初始化数据
     [self setUpDataWithChannelID:@"9"];
-    
-   
     
 }
 

@@ -25,6 +25,8 @@
 //下面的界面(tableView,显示频道信息)
 @property (nonatomic,strong)UITableView *channelTable;
 
+//用一个数组记录一下获取到的频道信息
+@property (nonatomic,strong)NSArray <channelModel *>*dataArray;
 
 
 @end
@@ -73,6 +75,9 @@
     
     //重新设置UI
     [self setUpUI];
+    
+    //从网络获取相关信息
+    [self setUpChannelData];
     
 }
 
@@ -124,7 +129,42 @@
      }];
 }
 
+-(void)setUpChannelData
+{
+    [channelModel getChannelData:^(NSArray<channelModel *> *dataArray) {
+       
+        self.dataArray = dataArray;
+        
+        NSLog(@"频道数量%lu",(unsigned long)dataArray.count);
+        
+        [dataArray enumerateObjectsUsingBlock:^(channelModel * _Nonnull obj,
+        NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            NSLog(@"频道名:%@",obj.name);
+            NSLog(@"频道的id:%@",obj.channel_id);
+            
+            
+        }];
+        
+        
+    } Error:^{
+        
+        
+        
+        
+    }];
+}
 
+//重写dataArray的set方法，当从外面获取到数据时，刷新界面
+-(void)setDataArray:(NSArray<channelModel *> *)dataArray
+{
+    _dataArray = dataArray;
+    
+    
+    
+    
+    //[self.channelTable reloadData];
+}
 
 
 - (void)didReceiveMemoryWarning
