@@ -12,7 +12,7 @@
 #import "channelModel.h"
 
 
-@interface LeftController ()
+@interface LeftController ()<UITableViewDelegate,UITableViewDataSource>
 
 
 
@@ -62,8 +62,11 @@
         //_channelTable = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _channelTable = [[UITableView alloc] init];
         
-        //_channelTable.dataSource = self;
-        //_channelTable.delegate = self;
+        _channelTable.dataSource = self;
+        _channelTable.delegate = self;
+        
+        //注册cell
+        [_channelTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"channelCell"];
     }
     
     return _channelTable;
@@ -135,8 +138,8 @@
        
         self.dataArray = dataArray;
         
+        /*
         NSLog(@"频道数量%lu",(unsigned long)dataArray.count);
-        
         [dataArray enumerateObjectsUsingBlock:^(channelModel * _Nonnull obj,
         NSUInteger idx, BOOL * _Nonnull stop) {
             
@@ -145,12 +148,11 @@
             
             
         }];
-        
+        */
         
     } Error:^{
         
-        
-        
+        NSLog(@"网络异常，频道信息获取失败");
         
     }];
 }
@@ -160,11 +162,81 @@
 {
     _dataArray = dataArray;
     
-    
-    
-    
-    //[self.channelTable reloadData];
+    [self.channelTable reloadData];
 }
+
+
+//实现tableView的数据源方法
+//(1)组
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+//(2)行
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count + 1;
+}
+//(3)行数据
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"channelCell" forIndexPath:indexPath];
+    
+    
+    
+    //设置cell的数据
+    if (indexPath.row == 0)
+    {
+        cell.textLabel.text = @"我的红心";
+    }
+    else
+    {
+        cell.textLabel.text = self.dataArray[indexPath.row -1].name;
+    }
+    
+    return cell;
+}
+
+//(4)点击cell之后的触发事件
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (indexPath.row == 0)
+    {
+        
+        if (!_isLogin)
+        {
+            NSLog(@"你还没有登录，请登录后再听");
+        }
+        else
+        {
+            NSLog(@"你还没有收藏音乐");
+        }
+        
+        return;
+    }
+    
+    
+    //显示中间的panel
+    [self.sidePanelController showCenterPanelAnimated:YES];
+    
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //获取当前cell对应的model
+    channelModel *model = self.dataArray[indexPath.row - 1];
+
+
+    
+    //通知主界面刷新数据(将model信息传送过去)
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"uploadModel" object:nil userInfo:@{@"model":model}];
+}
+
+-(void)dealloc
+{
+    NSLog(@"left界面销毁");
+}
+
 
 
 - (void)didReceiveMemoryWarning

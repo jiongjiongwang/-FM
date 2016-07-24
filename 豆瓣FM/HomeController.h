@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "channelModel.h"
+
 
 @interface HomeController : UIViewController
+
+//从外界获取的channelModel信息，用于设置播放的频道
+@property (nonatomic,strong)channelModel *model;
+
 
 @end

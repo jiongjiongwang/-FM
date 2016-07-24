@@ -50,6 +50,11 @@
 //记录添加手势的次数
 @property (nonatomic,assign)NSInteger gestureIndex;
 
+//设置频道信息
+@property (nonatomic,copy)NSString *channelID;
+
+//记录当前的播放时间
+@property (nonatomic,assign)NSTimeInterval currentTime;
 
 
 @end
@@ -60,16 +65,34 @@
 {
     [super viewDidLoad];
     
-    self.title  = @"轻音乐";
+    
     
     self.view.backgroundColor = [UIColor whiteColor];
     
     //初始化界面(界面上的控件做一次初始化)
     [self setUpUI];
     
-    //初始化数据
-    [self setUpDataWithChannelID:@"9"];
+    //初始化的频道数据
+    self.title  = @"轻音乐";
+    self.channelID = @"9";
     
+    
+    [self setUpDataWithChannelID:self.channelID];
+    
+    //当接收到leftVC的刷新界面的通知时，刷新界面
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadModel:) name:@"uploadModel" object:nil];
+
+
+}
+
+//获取到数据之后的处理事件
+-(void)uploadModel:(NSNotification *)notification
+{
+    
+    NSLog(@"notification = %@",notification);
+    NSLog(@"userInfo = %@",notification.userInfo);
+    self.model = notification.userInfo[@"model"];
+
 }
 
 //初始化数据+刷新数据
@@ -243,9 +266,8 @@
     //(1)获取播放器当前的播放时间
     NSTimeInterval currentTime = self.audioPlayer.currentPlaybackTime;
     
-    //NSLog(@"当前播放时间:%f",currentTime);
-    
-    
+    NSLog(@"当前播放时间:%f",currentTime);
+    self.currentTime = currentTime;
     
     //当时间大于0时
     //时间大于0有两种情况:1-第一次时间大于0,此时从网络上加载到了音乐
@@ -281,36 +303,56 @@
         {
             NSLog(@"当前歌曲播放完毕");
             
-            //更新BOOL值
-            _isSongOver = YES;
-            
-            //清空播放条
-            self.alumView.rotation = 0.0;
-            
-            //当前播放时间清空
-            currentTime = 0.0;
-            
-            //_gestureIndex置为0
-            _gestureIndex = 0;
-            
-            //暂时将手势移除
-            [self.alumView HeadImageGestureWithAddOrRemove:NO];
-            
-            //重新获取网络数据并播放
-            [self setUpDataWithChannelID:@"9"];
-            
+            [self RePlaySong];
             
         }
     }
 }
 
+//重写model的set方法，从外界获取到model信息之后重新设置播放歌曲信息
+-(void)setModel:(channelModel *)model
+{
+    _model = model;
+    
+    self.title = model.name;
+    self.channelID = model.channel_id;
+    
+    NSLog(@"切换频道换歌曲了");
+    
+    [self RePlaySong];
 
+}
+
+
+//重置播放新歌曲
+-(void)RePlaySong
+{
+    //更新BOOL值
+    _isSongOver = YES;
+    
+    //清空播放条
+    self.alumView.rotation = 0.0;
+    
+    //当前播放时间清空
+    self.currentTime = 0.0;
+    
+    //_gestureIndex置为0
+    _gestureIndex = 0;
+    
+    //暂时将手势移除
+    [self.alumView HeadImageGestureWithAddOrRemove:NO];
+    
+    //重新获取网络数据并播放
+    [self setUpDataWithChannelID:self.channelID];
+}
 
 
 
 -(void)dealloc
 {
     NSLog(@"VC销毁");
+    //控制器销毁时移除通知
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 
