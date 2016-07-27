@@ -53,8 +53,6 @@
 //设置频道信息
 @property (nonatomic,copy)NSString *channelID;
 
-//记录当前的播放时间
-@property (nonatomic,assign)NSTimeInterval currentTime;
 
 
 @end
@@ -89,8 +87,8 @@
 -(void)uploadModel:(NSNotification *)notification
 {
     
-    NSLog(@"notification = %@",notification);
-    NSLog(@"userInfo = %@",notification.userInfo);
+    //NSLog(@"notification = %@",notification);
+    //NSLog(@"userInfo = %@",notification.userInfo);
     self.model = notification.userInfo[@"model"];
 
 }
@@ -124,7 +122,7 @@
         NSLog(@"歌曲链接地址:%@",model.url);
         
         
-        [self.audioPlayer stop];
+        //[self.audioPlayer stop];
         
         //获取歌曲文件
         self.audioPlayer.contentURL=[NSURL URLWithString:model.url];
@@ -267,7 +265,6 @@
     NSTimeInterval currentTime = self.audioPlayer.currentPlaybackTime;
     
     NSLog(@"当前播放时间:%f",currentTime);
-    self.currentTime = currentTime;
     
     //当时间大于0时
     //时间大于0有两种情况:1-第一次时间大于0,此时从网络上加载到了音乐
@@ -333,8 +330,9 @@
     //清空播放条
     self.alumView.rotation = 0.0;
     
-    //当前播放时间清空
-    self.currentTime = 0.0;
+   
+    //歌曲停止播放
+    [self.audioPlayer stop];
     
     //_gestureIndex置为0
     _gestureIndex = 0;

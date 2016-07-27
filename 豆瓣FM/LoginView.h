@@ -10,4 +10,8 @@
 
 @interface LoginView : UIView
 
+//定义一个block，让VC进入下一个界面
+@property (nonatomic,copy)dispatch_block_t enterWebBlock;
+
+
 @end

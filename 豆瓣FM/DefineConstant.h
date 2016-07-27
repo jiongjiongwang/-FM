@@ -96,6 +96,20 @@
 
 
 
+//微博接入相关
+#define APPkey @"3367173614"
+#define APPsecret @"69843d1efabf2074f7ad2c53db30896b"
+
+//回调页
+#define APPREDIRECT_URI @"http://www.douban.com"
+//登录微博的微博账号和密码
+//账号
+#define weiboName @"wjsnh@yahoo.cn"
+//密码
+#define weiboPassWord  @"9999999"
+
+
+
 
 #endif /* DefineConstant_h */
 

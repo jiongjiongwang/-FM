@@ -10,7 +10,7 @@
 #import "LoginView.h"
 #import "UserView.h"
 #import "channelModel.h"
-
+#import "AuthViewController.h"
 
 @interface LeftController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -41,6 +41,25 @@
     {
         _loginView = [[LoginView alloc] init];
     }
+    
+    
+    __weak typeof(self) weakSelf = self;
+    
+    //定义登录界面的block
+    _loginView.enterWebBlock = ^(){
+        
+        NSLog(@"点击了登录/注册按钮");
+        
+        
+        AuthViewController *anthVC = [[AuthViewController alloc] init];
+        
+        
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:anthVC];
+        
+        [weakSelf presentViewController:nav animated:YES completion:nil];
+        
+    };
+    
     
     return _loginView;
 }

@@ -7,6 +7,8 @@
 //
 
 #import "LoginView.h"
+#import "AuthViewController.h"
+
 
 @interface LoginView()
 
@@ -111,7 +113,15 @@
 //登录/注册按钮
 -(void)clickButton:(UIButton *)btn
 {
-    NSLog(@"点击了登录/注册按钮");
+     //利用block让主VC进入AuthViewController
+    if (self.enterWebBlock)
+    {
+        _enterWebBlock();
+    }
+    
+    
+   
+
 }
 
 
