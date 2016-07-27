@@ -95,6 +95,68 @@
 }
 
 
+//实现webView的代理方法
+//(1)web开始加载
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+    NSLog(@"网页开始加载");
+}
+//(2)web结束加载
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSLog(@"网页加载结束");
+}
+//(3)web加载失败
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"网页加载失败");
+}
+//(4)监听webView 将要加载的request
+/*
+ 返回的值:
+ true:继续加载
+ false:停止加载
+ */
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    
+    //监听webView将要加载的request
+    //let urlString = request.URL?.absoluteString
+    
+    NSString *urlString = request.URL.absoluteString;
+    
+    //NSLog(@"urlString = %@",urlString);
+    //逐步获取code
+    if (urlString.length > 0)
+    {
+        NSLog(@"urlString = %@",urlString);
+        
+        //判断有没有回调页网址
+        if ([urlString hasPrefix:APPREDIRECT_URI])
+        {
+            NSLog(@"urlString hasPrefix urlString = %@",urlString);
+            
+            //获取urlString中“?”后面的所有信息
+            NSString *urlCode = request.URL.query;
+            
+            if (urlCode.length > 0)
+            {
+                NSRange range = [urlCode rangeOfString:@"code="];
+                
+                NSUInteger startIndex = range.location;
+                
+                
+                NSString *code = [urlCode substringFromIndex:startIndex+range.length];
+                
+                NSLog(@"code = %@",code);
+            }
+        }
+    }
+    
+    
+    return YES;
+    
+}
 
 - (void)didReceiveMemoryWarning
 {

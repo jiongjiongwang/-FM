@@ -103,7 +103,7 @@
         _songDataModel = model;
         
         //基本信息
-        NSLog(@"歌曲图片地址为:%@",model.picture);
+        //NSLog(@"歌曲图片地址为:%@",model.picture);
         
         
         [self.alumView.headImageView sd_setImageWithURL:[NSURL URLWithString:model.picture] placeholderImage:[UIImage imageNamed:@"AlumImage"]];
@@ -111,15 +111,15 @@
         
         
         
-        NSLog(@"歌曲名为:%@",model.title);
+        //NSLog(@"歌曲名为:%@",model.title);
         
         self.songNameLabel.text = model.title;
         
-        NSLog(@"歌手名:%@",model.artist);
+        //NSLog(@"歌手名:%@",model.artist);
         
         self.singerNameLabel.text = model.artist;
         
-        NSLog(@"歌曲链接地址:%@",model.url);
+        //NSLog(@"歌曲链接地址:%@",model.url);
         
         
         //[self.audioPlayer stop];
@@ -140,10 +140,10 @@
         
         
         //扩展信息
-        NSLog(@"专辑名:%@",model.albumtitle);
-        NSLog(@"专辑发行时间%@",model.public_time);
-        NSLog(@"歌手名:%@",model.singers[0].name);
-        NSLog(@"歌手的图片地址:%@",model.singers[0].avatar);
+        //NSLog(@"专辑名:%@",model.albumtitle);
+        //NSLog(@"专辑发行时间%@",model.public_time);
+        //NSLog(@"歌手名:%@",model.singers[0].name);
+        //NSLog(@"歌手的图片地址:%@",model.singers[0].avatar);
         
         
     } Error:^{
@@ -264,7 +264,7 @@
     //(1)获取播放器当前的播放时间
     NSTimeInterval currentTime = self.audioPlayer.currentPlaybackTime;
     
-    NSLog(@"当前播放时间:%f",currentTime);
+    //NSLog(@"当前播放时间:%f",currentTime);
     
     //当时间大于0时
     //时间大于0有两种情况:1-第一次时间大于0,此时从网络上加载到了音乐

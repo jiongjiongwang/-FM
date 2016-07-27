@@ -101,12 +101,12 @@
 #define APPsecret @"69843d1efabf2074f7ad2c53db30896b"
 
 //回调页
-#define APPREDIRECT_URI @"http://www.douban.com"
+#define APPREDIRECT_URI @"http://www.baidu.com"
 //登录微博的微博账号和密码
 //账号
 #define weiboName @"wjsnh@yahoo.cn"
 //密码
-#define weiboPassWord  @"9999999"
+#define weiboPassWord  @"999999"
 
 
 
