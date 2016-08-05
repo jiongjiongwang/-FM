@@ -12,6 +12,7 @@
 		4C4214211D44BD990005DA45 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4214201D44BD990005DA45 /* LoginView.m */; };
 		4C4214241D44D65A0005DA45 /* UserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4214231D44D65A0005DA45 /* UserView.m */; };
 		4C4214271D44DA4F0005DA45 /* channelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4214261D44DA4F0005DA45 /* channelModel.m */; };
+		4C4233A71D54343A0019D2E8 /* TokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4233A61D54343A0019D2E8 /* TokenModel.m */; };
 		4C4CD2251D489B7E008CEFAA /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4CD2241D489B7E008CEFAA /* AuthViewController.m */; };
 		4CF99CD11D38C61C0090A57D /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD01D38C61C0090A57D /* BaseController.m */; };
 		4CF99CD41D38CA4A0090A57D /* SongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF99CD31D38CA4A0090A57D /* SongModel.m */; };
@@ -42,6 +43,8 @@
 		4C4214231D44D65A0005DA45 /* UserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserView.m; sourceTree = "<group>"; };
 		4C4214251D44DA4F0005DA45 /* channelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = channelModel.h; sourceTree = "<group>"; };
 		4C4214261D44DA4F0005DA45 /* channelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = channelModel.m; sourceTree = "<group>"; };
+		4C4233A51D54343A0019D2E8 /* TokenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenModel.h; sourceTree = "<group>"; };
+		4C4233A61D54343A0019D2E8 /* TokenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenModel.m; sourceTree = "<group>"; };
 		4C4CD2231D489B7E008CEFAA /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
 		4C4CD2241D489B7E008CEFAA /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
 		4CF99CCF1D38C61C0090A57D /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
@@ -101,9 +104,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4C4233A31D5433640019D2E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C4233A51D54343A0019D2E8 /* TokenModel.h */,
+				4C4233A61D54343A0019D2E8 /* TokenModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4C4233A41D54336C0019D2E8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
 		4C4CD2211D489B41008CEFAA /* AuthVC */ = {
 			isa = PBXGroup;
 			children = (
+				4C4233A41D54336C0019D2E8 /* ViewModel */,
+				4C4233A31D5433640019D2E8 /* Model */,
 				4C4CD2221D489B5C008CEFAA /* Controller */,
 			);
 			name = AuthVC;
@@ -472,6 +493,7 @@
 				4CF99CD41D38CA4A0090A57D /* SongModel.m in Sources */,
 				4CFBD2591D37857600FBF9A7 /* JASidePanelController.m in Sources */,
 				4CFBD2501D3784B400FBF9A7 /* HomeController.m in Sources */,
+				4C4233A71D54343A0019D2E8 /* TokenModel.m in Sources */,
 				4CFBD25A1D37857600FBF9A7 /* UIViewController+JASidePanel.m in Sources */,
 				4CF99CD11D38C61C0090A57D /* BaseController.m in Sources */,
 				4CFBD2661D37ACC400FBF9A7 /* NSArray+Log.m in Sources */,
