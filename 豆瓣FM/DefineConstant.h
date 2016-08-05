@@ -100,6 +100,11 @@
 #define APPkey @"3367173614"
 #define APPsecret @"69843d1efabf2074f7ad2c53db30896b"
 
+
+//#define APPkey @"2628099223"
+//#define APPsecret @"a7c54aaf884fec8b1e6668cb6d40ed09"
+
+
 //回调页
 #define APPREDIRECT_URI @"http://www.baidu.com"
 //登录微博的微博账号和密码

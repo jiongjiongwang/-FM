@@ -7,6 +7,8 @@
 //
 
 #import "AuthViewController.h"
+#import "AuthViewModel.h"
+
 
 @interface AuthViewController ()<UIWebViewDelegate>
 
@@ -148,7 +150,33 @@
                 
                 NSString *code = [urlCode substringFromIndex:startIndex+range.length];
                 
-                NSLog(@"code = %@",code);
+                
+                
+                
+                //利用ViewModel工具单例类来请求accessToken授权
+                [[AuthViewModel sharedAuthTool] GetAccessTokenWithCode:code Success:^(BOOL isSuccess) {
+                    
+                    
+                   NSLog(@"出入的code = %@",code);
+                    
+                    
+                    NSLog(@"%d",isSuccess);
+                    
+                    //当获取网络信息失败时
+                    if (!isSuccess)
+                    {
+                        NSLog(@"网络信息获取失败");
+                        return ;
+                    }
+                    
+                    
+                    NSLog(@"我已经成功从网络获取到了数据了");
+                    NSLog(@"登录的情况是%d",[AuthViewModel sharedAuthTool].isLogin);
+                    
+                }];
+                
+                //停止加载回调页
+                //return NO;
             }
         }
     }
