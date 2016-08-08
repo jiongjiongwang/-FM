@@ -173,10 +173,13 @@
                     NSLog(@"我已经成功从网络获取到了数据了");
                     NSLog(@"登录的情况是%d",[AuthViewModel sharedAuthTool].isLogin);
                     
+                    
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                    
                 }];
                 
                 //停止加载回调页
-                //return NO;
+                return NO;
             }
         }
     }

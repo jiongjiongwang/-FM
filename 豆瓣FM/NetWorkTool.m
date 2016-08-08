@@ -40,14 +40,15 @@
 }
 
 //发送POST请求
+#warning OC发送POST请求有问题???
 -(void)POSTWebData:(NSString *)urlString
         parameters:(id)parameters
            success:(void (^)(id responseObject))success
            failure:(void (^)(NSError *error))failure
 {
     
-    NSLog(@"POSTWebData中urlString = %@",urlString);
-    NSLog(@"POSTWebData中的%@",parameters);
+    //NSLog(@"POSTWebData中urlString = %@",urlString);
+    //NSLog(@"POSTWebData中的%@",parameters);
     /*
     NSString *urlStrings = @"http://iosapi.itcast.cn/matchDoctors.json.php";
     NSDictionary *paramDic = @{@"ci1_id":@1,

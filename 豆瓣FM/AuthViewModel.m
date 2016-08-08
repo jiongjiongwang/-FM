@@ -9,6 +9,9 @@
 #import "AuthViewModel.h"
 #import "NetWorkTool.h"
 #import "TokenModel.h"
+#import "豆瓣FM-Swift.h"
+
+
 
 
 //单例工具类，用于完成网络数据获取和归档解档一些作用
@@ -80,10 +83,34 @@
 -(void)GetAccessTokenWithCode:(NSString *)code Success:(void (^)(BOOL))isSuccess
 {
     
-    NSLog(@"GetAccessTokenWithCode传入的code是%@",code);
+     //NSLog(@"GetAccessTokenWithCode传入的code是%@",code);
+    //调用Swift的WeiBoNetWorkTool类才可以正确发送POST请求
+    [WeiBoNetWorkTool.sharedTools POSTAccessToken:code success:^(id  _Nullable response) {
+        
+        //将responseObject强制转换成字典
+        NSDictionary *responseDict = (NSDictionary *)response;
+        
+        //字典转模型
+        TokenModel *model = [TokenModel TokenModelWithDict:responseDict];
+        
+        
+        //获取用户信息
+        [self GetUserInfo:model Success:isSuccess];
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+        
+        //请求失败时返回给Controller返回失败信息
+        isSuccess(NO);
+        
+        NSLog(@"获取Token失败");
+        
+    }];
     
-    
-
+    //调用OC的POST方法,有问题？？？
+    /*
     //使用NetWorkTool，发送POST请求
     [[NetWorkTool sharedWorkTool] POSTAccessTokenWithCode:code success:^(id responseObject) {
        
@@ -106,9 +133,9 @@
         
         NSLog(@"获取Token失败");
         
-        
-        
     }];
+    */
+    
     
 }
 
@@ -128,10 +155,10 @@
         model.screen_name = (NSString *)responseDict[@"screen_name"];
         model.avatar_large = (NSString *)responseDict[@"avatar_large"];
         
+        NSLog(@"用户名:%@",model.screen_name);
+        NSLog(@"用户头像地址:%@",model.avatar_large);
         
-        NSLog(@"%@",model.screen_name);
-        NSLog(@"%@",model.avatar_large);
-        
+        //将从网上获取到的正确的网络信息归档
         
         
         //告诉controller我已经成功获取到了用户的信息了(因为isSucc默认是false)
