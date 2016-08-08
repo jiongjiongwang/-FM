@@ -27,17 +27,25 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        
         instance = [[AuthViewModel alloc] init];
-        
-        
-        //单例对象一初始化时就先从本地获取到有没有归档的数据存在，防止以后重复获取本地数据
-        
+
     });
     
     
     return instance;
 }
+
+
+//重写init方法，单例对象一初始化时就先从本地获取到有没有归档的数据存在，防止以后重复获取本地数据
+-(instancetype)init
+{
+    if (self = [super init])
+    {
+        self.userModel = [self LoadViewModelData];
+    }
+    return self;
+}
+
 
 //重写accessToken的get方法，从外界获取信息更新accessToken属性值
 -(NSString *)accessToken
@@ -159,6 +167,7 @@
         NSLog(@"用户头像地址:%@",model.avatar_large);
         
         //将从网上获取到的正确的网络信息归档
+        [self SaveViewModelData:model];
         
         
         //告诉controller我已经成功获取到了用户的信息了(因为isSucc默认是false)
@@ -176,6 +185,28 @@
         
     }];
 }
+
+//1-归档方法
+-(void)SaveViewModelData:(TokenModel *)model
+{
+    //在归档方法之前，先把本地的model属性更新一下
+    self.userModel = model;
+    
+    NSLog(@"%@",NSHomeDirectory());
+    
+    //归档方法
+    [NSKeyedArchiver archiveRootObject:model toFile:kFilePath(@"DBUser.data")];
+}
+
+//2-解档方法
+-(TokenModel *)LoadViewModelData
+{
+    //解档方法
+    TokenModel *model = [NSKeyedUnarchiver unarchiveObjectWithFile:kFilePath(@"DBUser.data")];
+    
+    return model;
+}
+
 
 
 

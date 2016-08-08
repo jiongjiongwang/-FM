@@ -10,6 +10,8 @@
 #import "JASidePanelController.h"
 #import "HomeController.h"
 #import "LeftController.h"
+#import "AuthViewModel.h"
+
 
 
 @interface AppDelegate ()
@@ -38,8 +40,11 @@
     
     self.viewController.leftPanel = leftVC;
     
+    
+    
+    
     //在程序启动的时候读取登录信息返回给leftVC
-    leftVC.isLogin = NO;
+    leftVC.isLogin = [AuthViewModel sharedAuthTool].isLogin;
     
     
     //向右滑时的主界面
@@ -58,13 +63,6 @@
     
     return YES;
 }
-
-
-
-
-
-
-
 
 
 

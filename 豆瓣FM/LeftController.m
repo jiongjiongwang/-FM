@@ -48,8 +48,6 @@
     //定义登录界面的block
     _loginView.enterWebBlock = ^(){
         
-        NSLog(@"点击了登录/注册按钮");
-        
         
         AuthViewController *anthVC = [[AuthViewController alloc] init];
         
@@ -95,20 +93,21 @@
 {
     [super viewDidLoad];
     
-    //重新设置UI
-    [self setUpUI];
     
     //从网络获取相关信息
     [self setUpChannelData];
     
 }
 
-//重新设置UI界面
--(void)setUpUI
+
+//重写isLogin的set方法，从而判断该显示是登录界面还是用户界面
+-(void)setIsLogin:(BOOL)isLogin
 {
+    _isLogin = isLogin;
+    
     //(1)上面的界面(根据登录信息，没有登录的时候显示的是登录界面，有登录的时候显示的用户界面)
     //如果有登录
-    if (self.isLogin)
+    if (isLogin)
     {
         //加载用户界面
         [self changesSignView:self.userView];
@@ -125,6 +124,7 @@
     }
     
 }
+
 
 //封装切换登录界面的方法
 - (void)changesSignView:(UIView *)view
