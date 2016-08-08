@@ -163,8 +163,8 @@
         model.screen_name = (NSString *)responseDict[@"screen_name"];
         model.avatar_large = (NSString *)responseDict[@"avatar_large"];
         
-        NSLog(@"用户名:%@",model.screen_name);
-        NSLog(@"用户头像地址:%@",model.avatar_large);
+       // NSLog(@"用户名:%@",model.screen_name);
+        //NSLog(@"用户头像地址:%@",model.avatar_large);
         
         //将从网上获取到的正确的网络信息归档
         [self SaveViewModelData:model];

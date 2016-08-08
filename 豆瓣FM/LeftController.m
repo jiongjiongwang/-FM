@@ -97,8 +97,15 @@
     //从网络获取相关信息
     [self setUpChannelData];
     
+    
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(isLoginChaged) name:@"isLoginChanged" object:nil];
 }
 
+
+-(void)isLoginChaged
+{
+    self.isLogin = YES;
+}
 
 //重写isLogin的set方法，从而判断该显示是登录界面还是用户界面
 -(void)setIsLogin:(BOOL)isLogin
@@ -119,8 +126,10 @@
     {
         //加载登录界面
         [self changesSignView:self.loginView];
+        
+#warning 判断用户界面在不在当前的父View上，如果在，就移除，如果不存在就不移除
         //将用户界面移除
-        [self.userView removeFromSuperview];
+        //[self.userView removeFromSuperview];
     }
     
 }
@@ -254,6 +263,9 @@
 -(void)dealloc
 {
     NSLog(@"left界面销毁");
+    //控制器销毁时移除通知
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+
 }
 
 

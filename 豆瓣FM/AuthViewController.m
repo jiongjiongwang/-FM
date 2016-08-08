@@ -174,7 +174,13 @@
                     NSLog(@"登录的情况是%d",[AuthViewModel sharedAuthTool].isLogin);
                     
                     
-                    [self dismissViewControllerAnimated:YES completion:nil];
+                    //[self dismissViewControllerAnimated:YES completion:nil];
+                    [self dismissViewControllerAnimated:YES completion:^{
+                       
+                        //告诉LeftController主界面改变isLogin的值
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"isLoginChanged" object:nil];
+                        
+                    }];
                     
                 }];
                 

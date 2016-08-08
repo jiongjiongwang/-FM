@@ -7,6 +7,9 @@
 //
 
 #import "UserView.h"
+#import "AuthViewModel.h"
+#import <UIImageView+WebCache.h>
+
 
 @interface UserView()
 
@@ -43,14 +46,18 @@
     //(1)头像
     HeadImageView *headImageView = [[HeadImageView alloc] init];
     self.headImageView = headImageView;
-    headImageView.image = [UIImage imageNamed:@"name"];
+    //headImageView.image = [UIImage imageNamed:@"name"];
+    //设置头像
+    [headImageView sd_setImageWithURL:[NSURL URLWithString:[AuthViewModel sharedAuthTool].userModel.avatar_large] placeholderImage:[UIImage imageNamed:@"name"]];
     [self addSubview:headImageView];
     
     
     //(2)用户名
     UILabel *nameLabel = [[UILabel alloc] init];
     self.nameLabel = nameLabel;
-    nameLabel.text = @"用户名是啥是啥是啥hahahaha好好好好好到的";
+    //nameLabel.text = @"用户名是啥是啥是啥hahahaha好好好好好到的";
+    //设置用户名
+    nameLabel.text = [AuthViewModel sharedAuthTool].userModel.screen_name;
     nameLabel.font = [UIFont systemFontOfSize:15];
     nameLabel.numberOfLines = 0;
     [nameLabel setTextAlignment:NSTextAlignmentCenter];
